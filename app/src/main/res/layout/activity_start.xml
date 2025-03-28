@@ -39,6 +39,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="96dp"
         android:background="#B1E2432F"
+        android:onClick="goToHomeActivity"
         android:text="Voir l'historique"
         android:textAllCaps="true"
         android:textSize="16sp"
