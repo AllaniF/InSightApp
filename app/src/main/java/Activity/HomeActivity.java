@@ -1,8 +1,9 @@
 package Activity;
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.view.View;
+
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,11 +16,18 @@ import com.example.insightapp.R;
 
 import org.json.JSONObject;
 
+import java.util.List;
+
+import adapter.WeatherAdapter;
+import model.Weather;
 import service.Callback;
 import service.NasaApiService;
 
 public class HomeActivity extends AppCompatActivity {
     private NasaApiService nasaApiService;
+    private ListView listView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +40,31 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        nasaApiService = new NasaApiService(this);
+        nasaApiService = NasaApiService.getInstance(this);
+        listView = findViewById(R.id.listView);
 
 
-        nasaApiService.getMarsWeather(this, new Callback<JSONObject>() {
-            @Override
-            public void onMessage(JSONObject data) {
-                Toast.makeText(HomeActivity.this, "Température reçue !", Toast.LENGTH_SHORT).show();
-                // Ici, tu peux traiter les données JSON reçues
-            }
-        });
+        nasaApiService.getMarsWeatherDetails(
+                new Callback<List<Weather>>() {
+                    @Override
+                    public void onMessage(List<Weather> weatherList) {
+                        // Afficher le nombre de sols récupérés
+                        int solCount = weatherList.size();
+                        Toast.makeText(HomeActivity.this, "Nombre de sols : " + solCount, Toast.LENGTH_SHORT).show();
+
+                        WeatherAdapter adapter = new WeatherAdapter(HomeActivity.this, weatherList);
+                        listView.setAdapter(adapter);
+                    }
+                },
+                new Callback<Exception>() {
+                    @Override
+                    public void onMessage(Exception error) {
+                        Toast.makeText(HomeActivity.this, "Erreur : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+
+
+
     }
 }

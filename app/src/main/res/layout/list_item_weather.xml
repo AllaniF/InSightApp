@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- TextView pour afficher le numéro du sol -->
+    <TextView
+        android:id="@+id/sol_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Sol n°: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- TextView pour afficher la température moyenne -->
+    <TextView
+        android:id="@+id/avg_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Temperature: 0°C"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/sol_number"
+        app:layout_constraintTop_toBottomOf="@+id/sol_number" />
+
+    <!-- TextView pour afficher la pression moyenne -->
+    <TextView
+        android:id="@+id/avg_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Pression: 0 Pa"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/avg_temp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
