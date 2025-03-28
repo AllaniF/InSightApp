@@ -1,6 +1,7 @@
 package Activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.widget.ListView;
@@ -14,7 +15,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.insightapp.R;
 
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -54,6 +54,25 @@ public class HomeActivity extends AppCompatActivity {
 
                         WeatherAdapter adapter = new WeatherAdapter(HomeActivity.this, weatherList);
                         listView.setAdapter(adapter);
+
+
+                        listView.setOnItemClickListener((parent, view, position, id) -> {
+                            // Récupérer l'objet Weather du sol cliqué
+                            Weather selectedWeather = weatherList.get(position);
+
+                            // Créer un Intent pour ouvrir l'activité de détails
+                            Intent intent = new Intent(HomeActivity.this, SolDetailActivity.class);
+                            intent.putExtra("sol_number", selectedWeather.getSol());
+                            intent.putExtra("temperature", "Avg: " + selectedWeather.getAvgTemp() +
+                                    ", Min: " + selectedWeather.getMinTemp() +
+                                    ", Max: " + selectedWeather.getMaxTemp());
+                            intent.putExtra("pressure", "Avg: " + selectedWeather.getAvgPressure() +
+                                    ", Min: " + selectedWeather.getMinPressure() +
+                                    ", Max: " + selectedWeather.getMaxPressure());
+
+                            // Lancer l'activité de détails
+                            startActivity(intent);
+                        });
                     }
                 },
                 new Callback<Exception>() {
