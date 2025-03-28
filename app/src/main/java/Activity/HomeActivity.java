@@ -74,6 +74,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+
                             // Lancer l'activité de détails
                             startActivity(intent);
                         });

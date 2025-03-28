@@ -32,4 +32,10 @@ public class StartActivity extends AppCompatActivity {
         finish();
     }
 
+    public void goToDirection(View view) {
+        Intent intent = new Intent(this, DirectionActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

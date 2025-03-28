@@ -15,6 +15,9 @@
         android:theme="@style/Theme.InSightApp"
         tools:targetApi="31">
         <activity
+            android:name="Activity.DirectionActivity"
+            android:exported="false" />
+        <activity
             android:name="Activity.SolDetailActivity"
             android:exported="false" />
         <activity
