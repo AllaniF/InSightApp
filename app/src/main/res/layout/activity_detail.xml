@@ -5,17 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Activity.SolDetailActivity">
+    tools:context="Activity.SolDetailActivity"
+    tools:ignore="ExtraText">
 
     <TextView
         android:id="@+id/tvSolNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="144dp"
         android:layout_marginTop="16dp"
         android:text="Sol n°: ..."
         android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,18 +25,30 @@
         android:id="@+id/tvTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Température: avg, min, max"
-        app:layout_constraintStart_toStartOf="@+id/tvSolNumber"
-        app:layout_constraintTop_toBottomOf="@+id/tvSolNumber" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSolNumber" />
 
     <TextView
         android:id="@+id/tvPressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Pression: avg, min, max"
-        app:layout_constraintStart_toStartOf="@+id/tvSolNumber"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
+
+    <view.DirectionView
+        android:id="@+id/DirectionView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@id/tvPressure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,20 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- TextView pour afficher le numéro du sol -->
+
     <TextView
         android:id="@+id/sol_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:text="Sol n°: "
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- TextView pour afficher la température moyenne -->
     <TextView
         android:id="@+id/avg_temp"
         android:layout_width="wrap_content"
@@ -27,7 +26,7 @@
         android:layout_marginTop="24dp"
         android:text="temperature"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/sol_number"
+        app:layout_constraintStart_toStartOf="@id/sol_number"
         app:layout_constraintTop_toBottomOf="@+id/sol_number" />
 
     <!-- TextView pour afficher la pression moyenne -->

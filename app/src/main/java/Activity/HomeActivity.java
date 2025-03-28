@@ -60,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
                             // Récupérer l'objet Weather du sol cliqué
                             Weather selectedWeather = weatherList.get(position);
 
+
                             // Créer un Intent pour ouvrir l'activité de détails
                             Intent intent = new Intent(HomeActivity.this, SolDetailActivity.class);
                             intent.putExtra("sol_number", selectedWeather.getSol());
@@ -69,6 +70,9 @@ public class HomeActivity extends AppCompatActivity {
                             intent.putExtra("pressure", "Avg: " + selectedWeather.getAvgPressure() +
                                     ", Min: " + selectedWeather.getMinPressure() +
                                     ", Max: " + selectedWeather.getMaxPressure());
+                            intent.putExtra("weather_data", selectedWeather);
+
+
 
                             // Lancer l'activité de détails
                             startActivity(intent);

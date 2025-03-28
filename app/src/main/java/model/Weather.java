@@ -1,13 +1,17 @@
 package model;
 
+import android.os.Parcel;
+
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Weather {
+public class Weather implements Serializable {
     private String sol;
     private double avgTemp, minTemp, maxTemp;
     private double avgPressure, minPressure, maxPressure;
@@ -82,7 +86,26 @@ public class Weather {
         return windDirections;
     }
 
-    public static class WindData {
+
+    protected Weather(Parcel in) {
+        sol = in.readString();
+        avgTemp = in.readDouble();
+        minTemp = in.readDouble();
+        maxTemp = in.readDouble();
+        avgPressure = in.readDouble();
+        minPressure = in.readDouble();
+        maxPressure = in.readDouble();
+
+        int size = in.readInt();
+        windDirections = new HashMap<>();
+        for (int i = 0; i < size; i++) {
+            int key = in.readInt();
+            WindData value = new WindData(in.readInt(), in.readInt());
+            windDirections.put(key, value);
+        }
+    }
+
+    public static class WindData implements Serializable {
         private int compassDegrees;
         private int force;
 

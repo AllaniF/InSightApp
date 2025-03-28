@@ -13,6 +13,7 @@ import java.util.List;
 
 import model.Weather;
 
+
 public class WeatherAdapter extends BaseAdapter {
 
     private List<Weather> weatherList;
@@ -53,6 +54,9 @@ public class WeatherAdapter extends BaseAdapter {
         solNumber.setText("Sol n°: " + weather.getSol());
         avgTemp.setText("Temperature: " + weather.getAvgTemp() );
         avgPressure.setText("Pression: " + weather.getAvgPressure());
+
+
+
 
         return convertView;
     }

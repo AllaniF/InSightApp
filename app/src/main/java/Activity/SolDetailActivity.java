@@ -11,8 +11,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.insightapp.R;
 
+import model.Weather;
+import view.DirectionView;
+
 public class SolDetailActivity extends AppCompatActivity {
     private TextView tvSolNumber, tvTemperature, tvPressure;
+    private DirectionView directionView;
+    private Weather weatherData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +32,24 @@ public class SolDetailActivity extends AppCompatActivity {
         tvSolNumber = findViewById(R.id.tvSolNumber);
         tvTemperature = findViewById(R.id.tvTemperature);
         tvPressure = findViewById(R.id.tvPressure);
+        directionView = findViewById(R.id.DirectionView);
 
 
         String solNumber = getIntent().getStringExtra("sol_number");
         String temperature = getIntent().getStringExtra("temperature");
         String pressure = getIntent().getStringExtra("pressure");
-
+        weatherData = (Weather) getIntent().getSerializableExtra("weather_data");
 
         tvSolNumber.setText("Sol n°: " + solNumber);
         tvTemperature.setText("Température: " + temperature);
         tvPressure.setText("Pression: " + pressure);
+
+
+
+        // Afficher la direction du vent si les données sont valides
+        if (weatherData != null) {
+            directionView.setWeatherData(weatherData);
+        }
+
     }
 }
